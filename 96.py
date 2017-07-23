@@ -1,23 +1,14 @@
 class Solution(object):
-    def divide(self, dividend, divisor):
+    def numTrees(self, n):
         """
-        :type dividend: int
-        :type divisor: int
+        :type n: int
         :rtype: int
         """
-        max_number = 2**31 - 1
-        if divisor == 0: return max_number
-        label = (dividend>0 and divisor<0) or (dividend < 0 and divisor > 0)
-        shift = 31
-        ans = 0
-        a, b = abs(dividend), abs(divisor)
-        while shift >= 0:
-            if a>= (b<<shift):
-                a -= b<<shift
-                ans += 1<<shift
-            shift -= 1
-        if label:
-            ans = -ans
-        if ans > max_number:
-            return max_number
-        return ans
+        result = [0 for _ in range(n+1)]
+        result[0] = 1
+        result[1] = 1
+        if n<= 1: return result[n]
+        for i in range(2, n+1):
+            for j in range(i):
+                result[i] += result[j] * result[i-j-1]
+        return result[n]
