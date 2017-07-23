@@ -6,7 +6,7 @@ class Solution(object):
         """
         if not nums: return 0
         if len(nums) == 1: return nums[0]
-        current_value, max_value = nums[0], max(nums[0], nums[1])
-        for i in range(2,len(nums)):
-            max_value, current_value = max(max_value, current_value + nums[i]) ,max_value
-        return max_value
+        m_low, m_high = 0,0
+        for n in nums:
+            m_high, m_low = max(m_low+n, m_high), m_high
+        return m_high
