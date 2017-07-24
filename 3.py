@@ -12,8 +12,8 @@ class Solution(object):
             dic[item] = 0
         for i in range(len(s)):
             while j<len(s) and dic[s[j]] == 0:
-                ans = max(ans, j-i+1)
                 dic[s[j]] = 1
                 j += 1
+                ans = max(ans, j-i)
             dic[s[i]] = 0
         return ans
