@@ -32,4 +32,5 @@ class Solution(object):
                 if targetHash[item] > sourceHash[item]:
                     return False
             except:
-                return
+                return False
+        return True
