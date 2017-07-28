@@ -5,11 +5,12 @@ class Solution(object):
         :type coins: List[int]
         :rtype: int
         """
-        dp = [0 for _ in range(amount + 1)]
-        dp[0] = 1 
-        for i in range(len(coins)):
-            for j in range(amount + 1):
-                new_amount = j + coins[i]
-                if new_amount > amount or dp[j] == 0: continue
-                dp[new_amount] += dp[j]
-        return dp[amount]
+        res = [0 for _ in range(amount + 1)]
+        res[0] = 1
+        for n in coins:
+            for i in range(amount+1):
+                new_amount = i + n
+                if new_amount > amount or res[i] == 0:
+                    continue
+                res[new_amount] += res[i]
+        return res[-1]
