@@ -5,10 +5,10 @@ class Solution(object):
         :type amount: int
         :rtype: int
         """
-        res = [float('inf')] * (amount + 1)
+        res = [float('inf') for _ in range(amount+1)]
         res[0] = 0
-        for i in range(1,amount+1):
-            for n in coins:
+        for n in coins:
+            for i in range(amount+1):        
                 if i>=n:
                     res[i] = min(res[i], res[i-n] + 1)
         if res[-1] == float('inf'):
