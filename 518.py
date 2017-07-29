@@ -9,8 +9,8 @@ class Solution(object):
         res[0] = 1
         for n in coins:
             for i in range(amount+1):
-                new_amount = i + n
-                if new_amount > amount or res[i] == 0:
-                    continue
-                res[new_amount] += res[i]
+                if i>n:
+                    res[i] += res[i-n]
+                if i == n:
+                    res[i] += 1
         return res[-1]
