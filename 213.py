@@ -6,10 +6,9 @@ class Solution(object):
         """
         if not nums: return 0
         if len(nums) == 1: return nums[0]
-        m_low, m_high = 0,0
-        for n in nums:
-            m_high, m_low = max(m_low+n, m_high), m_high
-        first_circle = m_high
-        for n in nums:
-            m_high, m_low = max(m_low+n, m_high), m_high
-        return m_high - first_circle
+        low_value = high_value = low_value1 = high_value1 = 0
+        for item in nums[:-1]:
+            low_value, high_value = high_value, max(high_value, low_value + item)
+        for item in nums[1:]:
+            low_value1, high_value1 = high_value1, max(high_value1, low_value1 + item)
+        return max(high_value, high_value1)
