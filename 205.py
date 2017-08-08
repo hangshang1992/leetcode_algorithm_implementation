@@ -5,9 +5,9 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
-        d1, d2 = {}, {}
+        sourceHash, targetHash = dict(), dict()
         for i, val in enumerate(s):
-            d1[val] = d1.get(val, []) + [i]
+            sourceHash[val] = sourceHash.get(val, []) + [i]
         for i, val in enumerate(t):
-            d2[val] = d2.get(val, []) + [i]
-        return sorted(d1.values()) == sorted(d2.values())
+            targetHash[val] = targetHash.get(val, []) + [i]
+        return sorted(sourceHash.values()) == sorted(targetHash.values())
