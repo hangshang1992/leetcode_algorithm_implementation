@@ -5,20 +5,17 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
-        sourceHash, targetHash, set1 = dict(), dict(), set()
+        sourceHash, targetHash = dict(), dict()
+        set1 = set()
         for item in s:
             set1.add(item)
-            if item not in sourceHash:
-                sourceHash[item] = 0
-            sourceHash[item] += 1
+            sourceHash[item] = sourceHash.get(item, 0) + 1
         for item in t:
             set1.add(item)
-            if item not in targetHash:
-                targetHash[item] = 0
-            targetHash[item] += 1
+            targetHash[item] = targetHash.get(item, 0) + 1
         for item in set1:
             try:
-                if sourceHash[item] != targetHash[item]:
+                if targetHash[item] != sourceHash[item]:
                     return False
             except:
                 return False
