@@ -12,6 +12,11 @@ class Solution(object):
                 max_so_far = max(max_so_far, max_end)
             return max_so_far
         
+        if max(A) < 0:
+            return max(A)
         res1 = kadane(A)
-        res2 = sum(A) - kadane([-num for num in A])
+        
+        res2 = sum(A) + kadane([-num1 for num1 in A])
+        # print res1
         return max(res1, res2)
+        
