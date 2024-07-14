@@ -17,3 +17,20 @@ class Solution(object):
             else:
                 res.append(i)
         return res
+
+
+
+class Solution(object):
+    def merge(self, intervals):
+        """
+        :type intervals: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        res = []
+        for item in sorted(intervals, key=lambda i: i[0]):
+            if res and item[0] <= res[-1][-1]:
+                if item[-1] >= res[-1][-1]:
+                    res[-1][-1] = item[-1]
+            else:
+                res.append(item)
+        return res 
